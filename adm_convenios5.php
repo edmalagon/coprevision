@@ -10,11 +10,7 @@ $subtitulo="";
       $nc=$_POST['nom_convenio'];
 			$sql="UPDATE convenio SET tipo_convenio='".$_POST['tipo_convenio']."',
       nom_convenio='".$_POST['nom_convenio']."', eps='".$_POST['eps']."', afp='".$_POST['afp']."', ccf='".$_POST['ccf']."',
-<<<<<<< HEAD
       tadm='".$_POST['tadm']."'  WHERE id_convenio=".$_POST["id_convenio"];
-=======
-      tadm='".$_POST['tadm']."'  WHERE id_convenio=".$_POST["idc"];
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
 				$subtitulo="El convenio ".$nc;
 				$sub2='ADICIONADO';
 			break;
@@ -23,11 +19,7 @@ $subtitulo="";
 				if (!$fila=$bd1->sub_fila($sql)){
 					$fila=array("logo"=> "");
 				}
-<<<<<<< HEAD
 				$sql="UPDATE convenio SET estado_convenio=2 WHERE id_convenio=".$_POST["id_convenio"];
-=======
-				$sql="UPDATE convenio SET estado_convenio=2 WHERE id_convenio=".$_POST["idc"];
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
 				$subtitulo="Eliminado";
 			break;
 			case 'A':
@@ -39,11 +31,7 @@ $subtitulo="";
 				$sub2='ADICIONADO';
 			break;
 		}
-<<<<<<< HEAD
 		//echo $sql;
-=======
-		echo $sql;
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
 		if ($bd1->consulta($sql)){
 			$subtitulo="$subtitulo fue $sub2 con exito!";
 			$check='si';
@@ -192,13 +180,8 @@ if (isset($_GET["mante"])){					///nivel 2
                    <p><strong class="text-danger">Tarifa Administrativa: </strong><strong>$ '.$fila["tadm"].'</strong></p>
 									 </td>';
               echo'<td class="text-center">
-<<<<<<< HEAD
      							<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
                   <p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=X&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Eliminar convenio</button></a></p>
-=======
-     							<p><a href="'.PROGRAMA.'?opcion=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
-                  <p><a href="'.PROGRAMA.'?opcion=X&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Eliminar convenio</button></a></p>
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
      						 </td>';
 							echo "</tr>\n";
 						}
@@ -226,11 +209,7 @@ if (isset($_GET["mante"])){					///nivel 2
                    <p><strong class="text-danger">Tarifa Administrativa: </strong><strong>$ '.$fila["tadm"].'</strong></p>
 									 </td>';
               echo'<td class="text-center">
-<<<<<<< HEAD
      							<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
-=======
-     							<p><a href="'.PROGRAMA.'?opcion=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
      						 </td>';
 							echo "</tr>\n";
 						}
