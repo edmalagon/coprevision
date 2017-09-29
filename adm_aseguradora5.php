@@ -10,11 +10,7 @@ $subtitulo="";
       $nc=$_POST['nom_convenio'];
 			$sql="UPDATE convenio SET tipo_convenio='".$_POST['tipo_convenio']."',
       nom_convenio='".$_POST['nom_convenio']."', eps='".$_POST['eps']."', afp='".$_POST['afp']."', ccf='".$_POST['ccf']."',
-<<<<<<< HEAD
-      tadm='".$_POST['tadm']."'  WHERE id_convenio=".$_POST["id_convenio"];
-=======
       tadm='".$_POST['tadm']."'  WHERE id_convenio=".$_POST["idc"];
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
 				$subtitulo="El convenio ".$nc;
 				$sub2='ADICIONADO';
 			break;
@@ -23,11 +19,7 @@ $subtitulo="";
 				if (!$fila=$bd1->sub_fila($sql)){
 					$fila=array("logo"=> "");
 				}
-<<<<<<< HEAD
-				$sql="UPDATE convenio SET estado_convenio=2 WHERE id_convenio=".$_POST["id_convenio"];
-=======
 				$sql="UPDATE convenio SET estado_convenio=2 WHERE id_convenio=".$_POST["idc"];
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
 				$subtitulo="Eliminado";
 			break;
 			case 'A':
@@ -39,11 +31,7 @@ $subtitulo="";
 				$sub2='ADICIONADO';
 			break;
 		}
-<<<<<<< HEAD
-		//echo $sql;
-=======
 		echo $sql;
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
 		if ($bd1->consulta($sql)){
 			$subtitulo="$subtitulo fue $sub2 con exito!";
 			$check='si';
@@ -156,34 +144,23 @@ if (isset($_GET["mante"])){					///nivel 2
 			</tr>
 		<tr>
 			<th class="text-center info">ID</th>
-			<th class="text-center info">NOMBRE CONVENIO</th>
-      <th class="text-center info">TIPO CONVENIO</th>
-      <th class="text-center info">ESPECIFICACIONES</th>
+			<th class="text-center info">ASEGURADORA</th>
+      <th class="text-center info">TIPO</th>
       <th class="text-center info" colspan="2"></th>
 		</tr>
 			<?php
-			$sql1="SELECT id_convenio, resp_reg, freg, tipo_convenio, nom_convenio, eps, afp, ccf, tadm, estado_convenio
-
-						FROM  convenio ";
+			$sql1="SELECT id_aseguradora, resp_reg, freg, tipo_aseguradora,
+										cod_ministerio, nombre, nit, direccion, ciudad, telefono, estado
+ 						 FROM  aseguradora ";
 						//echo $sql1;
 			 if ($tabla=$bd1->sub_tuplas($sql1)){
           foreach ($tabla as $fila ) {
-						if ($fila['estado_convenio']=='1') {
+						if ($fila['estado']=='1') {
 							echo"<tr>\n";
-	        		echo'<td class="text-center"><strong>'.$fila["id_convenio"].'</strong></td>';
+	        		echo'<td class="text-center"><strong>'.$fila["id_aseguradora"].'</strong></td>';
 	        		echo'<td class="text-center">
-										<p><strong class="lead"><strong>'.$fila["nom_convenio"].'</strong></p>
+										<p><strong class="lead"><strong>'.$fila["nombre"].'</strong></p>
 									 </td>';
-              $tipo=$fila['tipo_convenio'];
-              if ($tipo==1) {
-                echo'<td class="text-center">
-       							<p><strong class="lead text-success"><strong>Dependiente</strong></p>
-       						 </td>';
-              }else {
-                echo'<td class="text-center">
-       							<p><strong class="lead text-primary"><strong>Independiente</strong></p>
-       						 </td>';
-              }
 
 							echo'<td class="text-left">
 									 <p><strong class="text-danger">EPS: </strong><strong>'.$fila["eps"].' %</strong></p>
@@ -192,21 +169,16 @@ if (isset($_GET["mante"])){					///nivel 2
                    <p><strong class="text-danger">Tarifa Administrativa: </strong><strong>$ '.$fila["tadm"].'</strong></p>
 									 </td>';
               echo'<td class="text-center">
-<<<<<<< HEAD
-     							<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
-                  <p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=X&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Eliminar convenio</button></a></p>
-=======
      							<p><a href="'.PROGRAMA.'?opcion=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
                   <p><a href="'.PROGRAMA.'?opcion=X&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Eliminar convenio</button></a></p>
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
      						 </td>';
 							echo "</tr>\n";
 						}
-            if ($fila['estado_convenio']=='2') {
+            if ($fila['estado']=='2') {
 							echo"<tr>\n";
-	        		echo'<td class="text-center"><strong>'.$fila["id_convenio"].'</strong></td>';
+	        		echo'<td class="text-center"><strong>'.$fila["id_aseguradora"].'</strong></td>';
 	        		echo'<td class="text-center">
-										<p><strong class="lead"><strong>'.$fila["nom_convenio"].'</strong></p>
+										<p><strong class="lead"><strong>'.$fila["nombre"].'</strong></p>
 									 </td>';
               $tipo=$fila['tipo_convenio'];
               if ($tipo==1) {
@@ -226,11 +198,7 @@ if (isset($_GET["mante"])){					///nivel 2
                    <p><strong class="text-danger">Tarifa Administrativa: </strong><strong>$ '.$fila["tadm"].'</strong></p>
 									 </td>';
               echo'<td class="text-center">
-<<<<<<< HEAD
-     							<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
-=======
      							<p><a href="'.PROGRAMA.'?opcion=E&idc='.$fila["id_convenio"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span> Edición convenio</button></a></p>
->>>>>>> 82585e5e1cdd730b25a0582bfad31e8e36b287f9
      						 </td>';
 							echo "</tr>\n";
 						}
