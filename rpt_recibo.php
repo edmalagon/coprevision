@@ -34,14 +34,15 @@ class MYPDF extends TCPDF {
         // Logo
 
         $image_file = 'images/previsocial.jpg';
+        $n1='ASOCIACIÓN MUTUAL DE SERVICIOS';
+        $n2=' SOCIALES';
+        $n3='PARA TRABAJADORES INDEPENDIENTES';
+        $titulo='PREVISOCIAL -- NIT 832011119-3';
 
-        $this->multicell(180,10,$this->image($image_file, $this->GetX(), $this->GetY(),20,20),0,'L');
-        // Set font
-        $this->SetFont('helvetica', 'B', 12);
-        // Title
-        $this->Cell(180, 20, 'RECIBO DE PAGO '.$nsede, 1, false, 'R', 0, '', 0, false, 'M', 'M');
+        $this->cell(25,0,$this->image($image_file , $this->GetX(), $this->GetY(),20,20),0,'L');
+        $this->SetFont('','B',9);
+        $this->multiCell(60,0,$n1.$n2.$n3,0,'C');
 
-        $this->Ln();
     }
 	// Load table data from file
 	public function LoadData($file) {
@@ -78,14 +79,164 @@ class MYPDF extends TCPDF {
 
 		foreach($data as $row) {
 
-      $this->SetFont('','B',7);
-      $this->Cell(11,0,'Cliente:',1,0,'L');
-      $this->SetFont('','',7);
-      $this->Cell(50,0, utf8_encode($row['nom_completo']),1,0,'L');
-      $this->SetFont('','B',7);
-      $this->Cell(5,0,'DI:',1,0,'L');
-      $this->SetFont('','',7);
-      $this->Cell(25,0, $row['tdoc_cli'].': '.$row['doc_cli'],1,0,'L');
+      $this->SetFont('','B',10);
+      $this->Cell(30,0,'Beneficiario:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(150,0, utf8_encode($row['nom_completo']),1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(8,0,'DI:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(30,0, $row['tdoc_cli'].': '.$row['doc_cli'],1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(142,0,'Pago Seguridad social '.$row['mes_pago'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'Dirección:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(50,0, $row['dir_cli'],1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(15,0,'Fijo:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(30,0, $row['fijo'],1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(15,0,'Celular:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(30,0, $row['celular'],1,0,'C');
+      $this->Ln();
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'EPS:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['eps'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_eps'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'AFP:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['afp'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_afp'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'ARP:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['arp'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_arp'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'CCF:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['ccf'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_ccf'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'T admin:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, 'Tarifa Administrativa',1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['tadm'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'Total:',1,0,'L');
+      $this->SetFont('','B',10);
+      $this->Cell(100,0, 'Total servicio ',1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(60,0, '$ '.$row['t_servicio'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(60,0,'Firma y cedula del beneficiario:',1,0,'L');
+      $this->SetFont('','B',10);
+      $this->Cell(120,30, '___________________________________',1,0,'C');
+      $this->Ln();
+      $this->Ln();
+      $this->Ln();
+
+      $image_file = 'images/previsocial.jpg';
+      $n1='ASOCIACIÓN MUTUAL DE SERVICIOS';
+      $n2=' SOCIALES';
+      $n3='PARA TRABAJADORES INDEPENDIENTES';
+      $titulo='PREVISOCIAL -- NIT 832011119-3';
+
+      $this->cell(25,0,$this->image($image_file , $this->GetX(), $this->GetY(),20,20),0,'L');
+      $this->SetFont('','B',9);
+      $this->multiCell(60,0,$n1.$n2.$n3,0,'C');
+      $this->Ln(10);
+      $this->SetFont('','B',10);
+      $this->Cell(30,0,'Beneficiario:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(150,0, utf8_encode($row['nom_completo']),1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(8,0,'DI:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(30,0, $row['tdoc_cli'].': '.$row['doc_cli'],1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(142,0,'Pago Seguridad social '.$row['mes_pago'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'Dirección:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(50,0, $row['dir_cli'],1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(15,0,'Fijo:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(30,0, $row['fijo'],1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(15,0,'Celular:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(30,0, $row['celular'],1,0,'C');
+      $this->Ln();
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'EPS:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['eps'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_eps'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'AFP:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['afp'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_afp'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'ARP:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['arp'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_arp'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'CCF:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, $row['ccf'],1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['t_ccf'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'T admin:',1,0,'L');
+      $this->SetFont('','',10);
+      $this->Cell(100,0, 'Tarifa Administrativa',1,0,'C');
+      $this->SetFont('','',10);
+      $this->Cell(60,0, '$ '.$row['tadm'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'Total:',1,0,'L');
+      $this->SetFont('','B',10);
+      $this->Cell(100,0, 'Total servicio ',1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(60,0, '$ '.$row['t_servicio'],1,0,'C');
+      $this->Ln();
+      $this->SetFont('','B',10);
+      $this->Cell(60,0,'Firma y cedula del beneficiario:',1,0,'L');
+      $this->SetFont('','B',10);
+      $this->Cell(120,30, '___________________________________',1,0,'C');
       $this->Ln();
 		}
 
@@ -145,7 +296,7 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,celular,
              b.nombre eps,
              c.nom_ocupacion,porcen_nivel,
              d.nom_empresa,
-             e.nom_convenio,
+             e.nom_convenio,tadm,
              f.salario,clase_riesgo,
              g.mes_pago, t_eps, t_afp, t_arp, t_ccf, t_servicio, dias_laborados, valor_dias_laborados, dias_mora, porcen_mora,
              h.nombre afp,

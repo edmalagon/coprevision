@@ -31,6 +31,7 @@ $subtitulo="";
 
 			if ($empresa=='PREVISOCIAL') {
 				$salario=$tmora+$_POST['t_servicio'];
+				$total=
 				$sql="INSERT INTO obligacion (id_afiliacion, freg, resp_reg, mes_pago, t_eps, t_afp, t_arp, t_ccf,
 																			t_servicio, estado_obligacion,dias_mora,porcen_mora)
 				VALUES ('".$_POST["ida"]."','".$f."','".$_SESSION['AUT']['id_user']."','".$_POST["mes_pago"]."',
@@ -43,10 +44,11 @@ $subtitulo="";
 				$dsalario=$_POST['dias_laborados'];
 				$dsalariodia=$_POST['salario']/30;
 				$s=$dsalario*$dsalariodia;
+				
 				$eps=floor($s*$_POST['t_eps'])/100;
 				$afp=floor($s*$_POST['t_afp'])/100;
 				$ccf=floor($s*$_POST['t_ccf'])/100;
-				$arl=floor($s*$_POST['t_arp'])/100;
+				$arl=floor($s*$_POST['t_arp']);
 				$tadm=$_POST['tadm'];
 				$total=floor($eps+$afp+$ccf+$arl+$tadm+$tmora);
 
