@@ -178,11 +178,12 @@ if (isset($_GET["mante"])){					///nivel 2
 			$doc=$_REQUEST["doc"];
 			$f1=$_REQUEST["f1"];
 			$f2=$_REQUEST["f2"];
-			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli, fijo, celular, estado_cli,nom_completo
+			$sql="SELECT id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento,
+									 edad, email_cli, dir_cli, fijo, celular, estado_cli,nom_completo
 
-						FROM cliente a
+						FROM cliente
 
-						WHERE a.gremio = '".$doc."' ";
+						WHERE gremio = '".$doc."' ";
 						//echo $sql;
 			$sql1="SELECT id_afiliacion, id_empresa, id_convenio, id_cliente, resp_reg, freg, fini_afiliacion, eps_afiliacion,
 										afp_afiliacion, ccf_afiliacion, arp_afiliacion, ocupacion, clase_riesgo, estado_afiliacion
