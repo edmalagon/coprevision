@@ -26,7 +26,7 @@ $subtitulo="";
 			case 'A':
 			$nc=$_POST['nombre'];
 			$sql="INSERT INTO gremio (nom_gremio)
-				VALUES ('".$_POST["nom_gremio"]."')";
+				VALUES ('".$_POST["nombre"]."')";
 				$subtitulo="El gremio ".$nc;
 				$sub2='ADICIONADO';
 			break;

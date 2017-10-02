@@ -7,7 +7,7 @@
 			<section class="panel-body col-xs-12">
 				<article class="col-xs-4">
 	        <label for="">Nombre Gremio:</label>
-	        <input type="text" class="form-control" name="nombre" value="<?php echo $fila['nombre'];?>" <?php echo $atributo2;?>>
+	        <input type="text" class="form-control" name="nombre" value="<?php echo $fila['nom_gremio'];?>" <?php echo $atributo2;?>>
 					<input type="hidden" class="form-control" name="id_gremio" value="<?php echo $fila['id_gremio'];?>" <?php echo $atributo1;?>>
 	        </select>
 	      </article>
