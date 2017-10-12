@@ -284,7 +284,7 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,fnacimiento,celular,gr
       WHERE f.id_afiliacion=$sede
 
 ";
-//echo $sql;
+echo $sql;
 $rs = mysql_query($sql);
 if (mysql_num_rows($rs)>0){
     $i=0;
