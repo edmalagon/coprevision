@@ -307,11 +307,11 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,celular,
                      INNER JOIN empresa d on d.id_empresa=f.id_empresa
                      INNER JOIN convenio e on e.id_convenio=f.id_convenio
                      LEFT JOIN obligacion g on f.id_afiliacion=g.id_afiliacion
-                     INNER JOIN ocupacion c on f.ocupacion=c.id_ocupacion
-                     INNER JOIN aseguradora b on b.id_aseguradora=f.eps_afiliacion
-                     INNER JOIN aseguradora h on h.id_aseguradora=f.afp_afiliacion
-                     INNER JOIN aseguradora i on i.id_aseguradora=f.ccf_afiliacion
-                     INNER JOIN aseguradora j on j.id_aseguradora=f.arp_afiliacion
+                     LEFT JOIN ocupacion c on f.ocupacion=c.id_ocupacion
+                     LEFT JOIN aseguradora b on b.id_aseguradora=f.eps_afiliacion
+                     LEFT JOIN aseguradora h on h.id_aseguradora=f.afp_afiliacion
+                     LEFT JOIN aseguradora i on i.id_aseguradora=f.ccf_afiliacion
+                     LEFT JOIN aseguradora j on j.id_aseguradora=f.arp_afiliacion
       WHERE g.id_obligacion=$sede
 
 ";
