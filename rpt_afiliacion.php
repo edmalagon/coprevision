@@ -281,7 +281,7 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,fnacimiento,celular,gr
                      INNER JOIN aseguradora h on h.id_aseguradora=f.afp_afiliacion
                      INNER JOIN aseguradora i on i.id_aseguradora=f.ccf_afiliacion
                      INNER JOIN aseguradora j on j.id_aseguradora=f.arp_afiliacion
-      WHERE g.id_afiliacion=$sede
+      WHERE f.id_afiliacion=$sede
 
 ";
 //echo $sql;
