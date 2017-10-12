@@ -289,7 +289,7 @@ if (isset($_GET["mante"])){					///nivel 2
 												echo'<h5 class="alert alert-info">'.$obligacion1.'</h5>';
 											}
 							}
-							if ($docs >= 08 && $docs <= 14) {
+							if ($docs >= '08' && $docs <= 14) {
 								$obligacion='Aqui se realiza pago';
 								echo'<th class="text-center">
 											<p><a href="'.PROGRAMA.'?opcion=5&ida='.$fila["id_afiliacion"].'&doc='.$doc.'&nc='.$nc.'"><button type="button" class="btn btn-primary" ><span class="fa fa-money"></span> Liquidar Obligaciones</button></a></p>
