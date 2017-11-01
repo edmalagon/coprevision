@@ -33,7 +33,7 @@ $subtitulo="";
 				$sub2='ADICIONADO';
 			break;
 		}
-		echo $sql;
+		//echo $sql;
 		if ($bd1->consulta($sql)){
 			$subtitulo="$subtitulo fue $sub2 con exito!";
 			$check='si';

@@ -93,7 +93,7 @@
 					<label for="">Tarifa EPS</label>';
 						$s=$fila['salario'];
 						$aseg=$fila['eps'];
-						$teps=floor(($s*$aseg)/100);
+						$teps=ceil(($s*$aseg)/100);
 						echo'<input type="text" required="" class="form-control" name="t_eps" value="'.$fila['eps'].'" '.$atributo1.'>';
 
 				echo'</article>';
@@ -102,7 +102,7 @@
 
 							$s=$fila['salario'];
 							$aseg=$fila['afp'];
-							$tafp=floor(($s*$aseg)/100);
+							$tafp=ceil(($s*$aseg)/100);
 							echo'<input type="text" required="" class="form-control" name="t_afp" value="'.$fila['afp'].'" '.$atributo1.'>';
 
 				echo'</article>';
@@ -111,7 +111,7 @@
 
 							$s=$fila['salario'];
 							$aseg=$fila['porcen_nivel'];
-							$tarl=floor(($s*$aseg)/100);
+							$tarl=ceil(($s*$aseg)/100);
 							echo'<input type="text" required="" class="form-control" name="t_arp" value="'.$fila['porcen_nivel'].'" '.$atributo1.'>';
 
 				echo'</article>';
@@ -120,7 +120,7 @@
 
 							$s=$fila['salario'];
 							$aseg=$fila['ccf'];
-							$tccf=floor(($s*$aseg)/100);
+							$tccf=ceil(($s*$aseg)/100);
 							echo'<input type="text" required="" class="form-control" name="t_ccf" value="'.$fila['ccf'].'" '.$atributo1.'>';
 							echo'<input type="text" required="" class="form-control" name="adm" value="'.$fila['tadm'].'" '.$atributo1.'>';
 
