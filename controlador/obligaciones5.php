@@ -31,12 +31,12 @@ $subtitulo="";
 
 			if ($empresa=='PREVISOCIAL') {
 				$salario=$tmora+$_POST['t_servicio'];
-				$total=
+				$to=floor($salario);
 				$sql="INSERT INTO obligacion (id_afiliacion, freg, resp_reg, mes_pago, t_eps, t_afp, t_arp, t_ccf,
 																			t_servicio, estado_obligacion,dias_mora,porcen_mora)
 				VALUES ('".$_POST["ida"]."','".$f."','".$_SESSION['AUT']['id_user']."','".$_POST["mes_pago"]."',
 								'".$_POST["t_eps"]."','".$_POST["t_afp"]."','".$_POST["t_arp"]."','".$_POST["t_ccf"]."',
-								'".$salario."','1','".$_POST["mora"]."','".$_POST["porcenmora"]."')";
+								'".$to."','1','".$_POST["mora"]."','".$_POST["porcenmora"]."')";
 			$subtitulo="La obligación del cliente ".$nc." para el mes de ".$mes;
 			$sub2='ADICIONADA';
 			}
@@ -44,7 +44,7 @@ $subtitulo="";
 				$dsalario=$_POST['dias_laborados'];
 				$dsalariodia=$_POST['salario']/30;
 				$s=$dsalario*$dsalariodia;
-				
+
 				$eps=floor($s*$_POST['t_eps'])/100;
 				$afp=floor($s*$_POST['t_afp'])/100;
 				$ccf=floor($s*$_POST['t_ccf'])/100;
@@ -63,7 +63,7 @@ $subtitulo="";
 
 			break;
 		}
-		//echo $sql;
+		echo $sql;
 		if ($bd1->consulta($sql)){
 			$subtitulo="$subtitulo fue $sub2 con exito!";
 			$check='si';

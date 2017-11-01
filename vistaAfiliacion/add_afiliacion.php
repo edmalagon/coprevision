@@ -7,7 +7,7 @@ $(function() {
               minLength: 4,
               select: function(event, ui) {
         event.preventDefault();
-                  $('#codigo').val(ui.item.codigo);
+        $('#codigo').val(ui.item.codigo);
         $('#descripcion').val(ui.item.descripcion);
         $('#porcentaje').val(ui.item.porcentaje);
         $('#id_producto').val(ui.item.id_producto);
@@ -150,7 +150,7 @@ $(function() {
 	          ?>
 	        </select>
 	      </article>
-        
+
       </section>
       <section class="panel-body">
         <article class="col-xs-3">

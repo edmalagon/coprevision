@@ -82,7 +82,11 @@ class MYPDF extends TCPDF {
       $this->SetFont('','B',10);
       $this->Cell(30,0,'Beneficiario:',1,0,'L');
       $this->SetFont('','',10);
-      $this->Cell(150,0, utf8_encode($row['nom_completo']),1,0,'C');
+      $this->Cell(110,0, utf8_encode($row['nom_completo']),1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'Recibo:',1,0,'L');
+      $this->SetFont('','B',20);
+      $this->Cell(20,0, utf8_encode($row['id_obligacion']),1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(8,0,'DI:',1,0,'L');
@@ -168,7 +172,11 @@ class MYPDF extends TCPDF {
       $this->SetFont('','B',10);
       $this->Cell(30,0,'Beneficiario:',1,0,'L');
       $this->SetFont('','',10);
-      $this->Cell(150,0, utf8_encode($row['nom_completo']),1,0,'C');
+      $this->Cell(110,0, utf8_encode($row['nom_completo']),1,0,'C');
+      $this->SetFont('','B',10);
+      $this->Cell(20,0,'Recibo:',1,0,'L');
+      $this->SetFont('','B',10);
+      $this->Cell(20,0, utf8_encode($row['id_obligacion']),1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(8,0,'DI:',1,0,'L');
@@ -298,7 +306,7 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,celular,
              d.nom_empresa,
              e.nom_convenio,tadm,
              f.salario,clase_riesgo,
-             g.mes_pago, t_eps, t_afp, t_arp, t_ccf, t_servicio, dias_laborados, valor_dias_laborados, dias_mora, porcen_mora,
+             g.id_obligacion,mes_pago, t_eps, t_afp, t_arp, t_ccf, t_servicio, dias_laborados, valor_dias_laborados, dias_mora, porcen_mora,
              h.nombre afp,
              i.nombre ccf,
              j.nombre arp
