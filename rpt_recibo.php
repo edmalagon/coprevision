@@ -201,28 +201,28 @@ class MYPDF extends TCPDF {
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'EPS:',1,0,'L');
-      $this->SetFont('','',10);
+      $this->SetFont('','',8);
       $this->Cell(100,0, $row['eps'],1,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_eps'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'AFP:',1,0,'L');
-      $this->SetFont('','',10);
+      $this->SetFont('','',8);
       $this->Cell(100,0, $row['afp'],1,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_afp'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'ARP:',1,0,'L');
-      $this->SetFont('','',10);
+      $this->SetFont('','',8);
       $this->Cell(100,0, $row['arp'],1,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_arp'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'CCF:',1,0,'L');
-      $this->SetFont('','',10);
+      $this->SetFont('','',8);
       $this->Cell(100,0, $row['ccf'],1,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_ccf'],1,0,'C');
@@ -340,7 +340,7 @@ $pdf->ColoredTable($header, $data);
 
 // ---------------------------------------------------------
 // Change the path to whatever you like, even public:// will do or you could also make use of the private file system by using private://
-$nombre='lista dieta';
+$nombre='Recibo';
 // close and output PDF document
 $pdf->Output($nombre.'.pdf', 'I');
 

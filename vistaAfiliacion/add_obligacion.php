@@ -62,7 +62,7 @@
 					<label for="">Tarifa EPS</label>';
 						$s=$fila['salario'];
 						$aseg=$fila['eps'];
-						$teps=floor(($s*$aseg)/100);
+						$teps=ceil(($s*$aseg)/100);
 						echo'<input type="text" required="" class="form-control" name="t_eps" value="'.$teps.'" '.$atributo1.'>';
 
 				echo'</article>';
@@ -70,21 +70,21 @@
 					<label for="">Tarifa AFP</label>';
 							$s=$fila['salario'];
 							$aseg=$fila['afp'];
-							$tafp=floor(($s*$aseg)/100);
+							$tafp=ceil(($s*$aseg)/100);
 							echo'<input type="text" required="" class="form-control" name="t_afp" value="'.$tafp.'" '.$atributo1.'>';
 				echo'</article>';
 				echo'<article class="col-xs-3">
 					<label for="">Tarifa ARP</label>';
 							$s=$fila['salario'];
 							$aseg=$fila['porcen_nivel'];
-							$tarl=floor(($s*$aseg)/100);
+							$tarl=ceil(($s*$aseg)/100);
 							echo'<input type="text" required="" class="form-control" name="t_arp" value="'.$tarl.'" '.$atributo1.'>';
 				echo'</article>';
 				echo'<article class="col-xs-3">
 					<label for="">Tarifa CCF</label>';
 							$s=$fila['salario'];
 							$aseg=$fila['ccf'];
-							$tccf=floor(($s*$aseg)/100);
+							$tccf=ceil(($s*$aseg)/100);
 							echo'<input type="text" required="" class="form-control" name="t_ccf" value="'.$tccf.'" '.$atributo1.'>';
 				echo'</article>';
 			}
@@ -94,7 +94,7 @@
 						$s=$fila['salario'];
 						$aseg=$fila['eps'];
 						$teps=ceil(($s*$aseg)/100);
-						echo'<input type="text" required="" class="form-control" name="t_eps" value="'.$fila['eps'].'" '.$atributo1.'>';
+						echo'<input type="text" required="" class="form-control" name="t_eps" value="'.$teps.'" '.$atributo1.'>';
 
 				echo'</article>';
 				echo'<article class="col-xs-3">
@@ -103,7 +103,7 @@
 							$s=$fila['salario'];
 							$aseg=$fila['afp'];
 							$tafp=ceil(($s*$aseg)/100);
-							echo'<input type="text" required="" class="form-control" name="t_afp" value="'.$fila['afp'].'" '.$atributo1.'>';
+							echo'<input type="text" required="" class="form-control" name="t_afp" value="'.$tafp.'" '.$atributo1.'>';
 
 				echo'</article>';
 				echo'<article class="col-xs-3">
@@ -112,7 +112,7 @@
 							$s=$fila['salario'];
 							$aseg=$fila['porcen_nivel'];
 							$tarl=ceil(($s*$aseg)/100);
-							echo'<input type="text" required="" class="form-control" name="t_arp" value="'.$fila['porcen_nivel'].'" '.$atributo1.'>';
+							echo'<input type="text" required="" class="form-control" name="t_arp" value="'.$tarl.'" '.$atributo1.'>';
 
 				echo'</article>';
 				echo'<article class="col-xs-3">
@@ -121,7 +121,7 @@
 							$s=$fila['salario'];
 							$aseg=$fila['ccf'];
 							$tccf=ceil(($s*$aseg)/100);
-							echo'<input type="text" required="" class="form-control" name="t_ccf" value="'.$fila['ccf'].'" '.$atributo1.'>';
+							echo'<input type="text" required="" class="form-control" name="t_ccf" value="'.$tccf.'" '.$atributo1.'>';
 							echo'<input type="text" required="" class="form-control" name="adm" value="'.$fila['tadm'].'" '.$atributo1.'>';
 
 				echo'</article>';
@@ -178,17 +178,19 @@
 					$empresa=$fila['nom_empresa'];
 					if ($empresa=='PREVISOCIAL') {
 						$tadmin=$fila['tadm'];
-						$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin;
+						$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin+1000;
+						$t=round($ttotal,-3);
 						echo'
 						<article class="col-xs-5">
-							<input type="text" required="" class="form-control text-danger lead" name="t_servicio" value="'.$ttotal.'" '.$atributo1.'>
+							<input type="text" required="" class="form-control text-danger lead" name="t_servicio" value="'.$t.'" '.$atributo1.'>
 						</article>';
 					}
 					if ($empresa=='PREVISION') {
 		 				$tadmin=$fila['tadm'];
 		 				$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin;
+						$t=round($ttotal,-3);
 		 		echo'<article class="col-xs-5">
-		 					<input type="text" required="" class="form-control text-danger lead" name="t_servicio" value="'.$ttotal.'" '.$atributo1.'>
+		 					<input type="text" required="" class="form-control text-danger lead" name="t_servicio" value="'.$t.'" '.$atributo1.'>
 		 				</article>';
 				echo'<article class="col-xs-2">
 				 			<label for="">Dias laborados:</label>

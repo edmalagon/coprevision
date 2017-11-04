@@ -31,11 +31,11 @@ $subtitulo="";
 
 			if ($empresa=='PREVISOCIAL') {
 				$salario=$tmora+$_POST['t_servicio'];
-				$to=floor($salario);
+				$to=ceil($salario);
 				$sql="INSERT INTO obligacion (id_afiliacion, freg, resp_reg, mes_pago, t_eps, t_afp, t_arp, t_ccf,
 																			t_servicio, estado_obligacion,dias_mora,porcen_mora)
 				VALUES ('".$_POST["ida"]."','".$f."','".$_SESSION['AUT']['id_user']."','".$_POST["mes_pago"]."',
-								'".$_POST["teps"]."','".$_POST["tafp"]."','".$_POST["tarp"]."','".$_POST["tccf"]."',
+								'".$_POST["t_eps"]."','".$_POST["t_afp"]."','".$_POST["t_arp"]."','".$_POST["t_ccf"]."',
 								'".$to."','1','".$_POST["mora"]."','".$_POST["porcenmora"]."')";
 			$subtitulo="La obligación del cliente ".$nc." para el mes de ".$mes;
 			$sub2='ADICIONADA';
@@ -50,7 +50,7 @@ $subtitulo="";
 				$ccf=floor($s*$_POST['t_ccf'])/100;
 				$arl=floor($s*$_POST['t_arp']);
 				$tadm=$_POST['tadm'];
-				$total=floor($eps+$afp+$ccf+$arl+$tadm+$tmora);
+				$total=ceil($eps+$afp+$ccf+$arl+$tadm+$tmora);
 
 				$sql="INSERT INTO obligacion (id_afiliacion, freg, resp_reg, mes_pago, t_eps, t_afp, t_arp, t_ccf,
 																			t_servicio, estado_obligacion)
