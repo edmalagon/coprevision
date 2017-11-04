@@ -281,7 +281,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=2;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -296,7 +296,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=3;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -313,7 +313,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=4;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -330,7 +330,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=5;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -346,7 +346,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=6;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -362,7 +362,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=7;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -378,7 +378,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=8;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -395,7 +395,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=9;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -412,7 +412,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=10;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -429,7 +429,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=11;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -445,7 +445,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=12;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -461,7 +461,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=13;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -477,7 +477,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=14;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -493,7 +493,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=15;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -509,7 +509,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=16;
-											$fmora=$f-$ftope;
+											$fmora=$ftope-$f;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
