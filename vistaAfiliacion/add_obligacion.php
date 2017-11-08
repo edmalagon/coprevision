@@ -89,41 +89,13 @@
 				echo'</article>';
 			}
 			if ($fila['nom_empresa']=='PREVISION') {
-				echo'<article class="col-xs-3">
-					<label for="">Tarifa EPS</label>';
-						$s=$fila['salario'];
-						$aseg=$fila['eps'];
-						$teps=ceil(($s*$aseg)/100);
-						echo'<input type="text" required="" class="form-control" name="t_eps" value="'.$teps.'" '.$atributo1.'>';
 
-				echo'</article>';
-				echo'<article class="col-xs-3">
-					<label for="">Tarifa AFP</label>';
-
-							$s=$fila['salario'];
-							$aseg=$fila['afp'];
-							$tafp=ceil(($s*$aseg)/100);
-							echo'<input type="text" required="" class="form-control" name="t_afp" value="'.$tafp.'" '.$atributo1.'>';
-
-				echo'</article>';
-				echo'<article class="col-xs-3">
-					<label for="">Tarifa ARP</label>';
-
-							$s=$fila['salario'];
-							$aseg=$fila['porcen_nivel'];
-							$tarl=ceil(($s*$aseg)/100);
-							echo'<input type="text" required="" class="form-control" name="t_arp" value="'.$tarl.'" '.$atributo1.'>';
-
-				echo'</article>';
-				echo'<article class="col-xs-3">
-					<label for="">Tarifa CCF</label>';
-
-							$s=$fila['salario'];
-							$aseg=$fila['ccf'];
-							$tccf=ceil(($s*$aseg)/100);
-							echo'<input type="text" required="" class="form-control" name="t_ccf" value="'.$tccf.'" '.$atributo1.'>';
-							echo'<input type="text" required="" class="form-control" name="adm" value="'.$fila['tadm'].'" '.$atributo1.'>';
-
+				echo'<article class="col-xs-12">
+					<label for="" class="alert alert-danger">Las tarifas de parafiscales en clientes PREVISION se calcularan segun los dias laborados.</label>';
+					echo'<input type="hidden" class="form-control" name="t_eps" value="'.$fila['eps'].'" >';
+					echo'<input type="hidden" class="form-control" name="t_afp" value="'.$fila['afp'].'" >';
+					echo'<input type="hidden" class="form-control" name="t_arp" value="'.$fila['porcen_nivel'].'" >';
+					echo'<input type="hidden" class="form-control" name="t_ccf" value="'.$fila['ccf'].'" >';
 				echo'</article>';
 			}
 
@@ -170,10 +142,6 @@
 				</article>
 			</section>
 			<section class="panel-body">
-
-				<article class="col-xs-2">
-					<label for="" class="text-danger lead">Total a cancelar: $</label>
-				</article>
 				<?php
 					$empresa=$fila['nom_empresa'];
 					if ($empresa=='PREVISOCIAL') {
@@ -181,21 +149,20 @@
 						$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin+1000;
 						$t=round($ttotal,-3);
 						echo'
+						<article class="col-xs-2">
+							<label for="" class="text-danger lead">Total a cancelar: $</label>
+						</article>
 						<article class="col-xs-5">
 							<input type="text" required="" class="form-control text-danger lead" name="t_servicio" value="'.$t.'" '.$atributo1.'>
 						</article>';
 					}
 					if ($empresa=='PREVISION') {
-		 				$tadmin=$fila['tadm'];
-		 				$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin;
-						$t=round($ttotal,-3);
-		 		echo'<article class="col-xs-5">
-		 					<input type="text" required="" class="form-control text-danger lead" name="t_servicio" value="'.$t.'" '.$atributo1.'>
-		 				</article>';
-				echo'<article class="col-xs-2">
-				 			<label for="">Dias laborados:</label>
-				 			<input type="text" name="dias_laborados" class="form-control" value="0">
-				 		</article>';
+
+				echo'
+					  <article class="col-xs-2">
+							<label for="">Dias laborados:</label>
+						 	<input type="text" name="dias_laborados" class="form-control" value="0">
+						</article>';
 					}
 
 				 ?>

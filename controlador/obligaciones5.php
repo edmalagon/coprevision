@@ -41,22 +41,25 @@ $subtitulo="";
 			$sub2='ADICIONADA';
 			}
 			if ($empresa=='PREVISION') {
-				$dsalario=$_POST['dias_laborados'];
-				$dsalariodia=$_POST['salario']/30;
-				$s=$dsalario*$dsalariodia;
+				$dlaborado=$_POST['dias_laborados'];
+				$basesalario=$_POST['salario'];
+				$dias=ceil($basesalario/30);
+				$s=$dias*$dlaborado;
 
-				$eps=floor($s*$_POST['t_eps'])/100;
-				$afp=floor($s*$_POST['t_afp'])/100;
-				$ccf=floor($s*$_POST['t_ccf'])/100;
-				$arl=floor($s*$_POST['t_arp']);
+				$eps=ceil($s*$_POST['t_eps'])/100;
+				$afp=ceil($s*$_POST['t_afp'])/100;
+				$ccf=ceil($s*$_POST['t_ccf'])/100;
+				$arl=ceil($s*$_POST['t_arp']/100);
+				echo $eps;
 				$tadm=$_POST['tadm'];
-				$total=ceil($eps+$afp+$ccf+$arl+$tadm+$tmora);
+				$ttotal=$eps+$afp+$arl+$ccf+$tadm+1000;
+				$t=round($ttotal,-3);
 
 				$sql="INSERT INTO obligacion (id_afiliacion, freg, resp_reg, mes_pago, t_eps, t_afp, t_arp, t_ccf,
-																			t_servicio, estado_obligacion)
+																			t_servicio, estado_obligacion,dias_laborados,valor_dias_laborados,dias_mora,porcen_mora)
 				VALUES ('".$_POST["ida"]."','".$f."','".$_SESSION['AUT']['id_user']."','".$_POST["mes_pago"]."',
 								'".$eps."','".$afp."','".$arl."','".$ccf."',
-								'".$total."','1')";
+								'".$t."','1','".$_POST['dias_laborados']."','".$dias."','".$_POST['mora']."','".$_POST['porcenmora']."')";
 			$subtitulo="La obligación del cliente ".$nc." para el mes de ".$mes;
 			$sub2='ADICIONADA';
 			}
