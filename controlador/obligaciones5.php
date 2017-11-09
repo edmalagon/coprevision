@@ -51,7 +51,7 @@ $subtitulo="";
 				$ccf=ceil($s*$_POST['t_ccf'])/100;
 				$arl=ceil($s*$_POST['t_arp']/100);
 				echo $eps;
-				$tadm=$_POST['tadm'];
+				$tadm=$_POST['t_admin'];
 				$ttotal=$eps+$afp+$arl+$ccf+$tadm+1000;
 				$t=round($ttotal,-3);
 

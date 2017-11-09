@@ -96,6 +96,7 @@
 					echo'<input type="hidden" class="form-control" name="t_afp" value="'.$fila['afp'].'" >';
 					echo'<input type="hidden" class="form-control" name="t_arp" value="'.$fila['porcen_nivel'].'" >';
 					echo'<input type="hidden" class="form-control" name="t_ccf" value="'.$fila['ccf'].'" >';
+					echo'<input type="hidden" class="form-control" name="t_admin" value="'.$fila['tadm'].'" >';
 				echo'</article>';
 			}
 
