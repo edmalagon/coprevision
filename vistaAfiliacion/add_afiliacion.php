@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="css/jquery-ui.css" media="screen" title="no title" charset="utf-8">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script type="text/javascript">
