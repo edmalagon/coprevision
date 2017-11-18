@@ -67,7 +67,7 @@ $(function() {
 				<article class="col-xs-4">
 					<label for="">Fecha de afiliación:</label>
 					<input type="date" required="" name="fini_afiliacion" class="form-control" value="">
-          <input type="hidden" required="" name="id_cliente" class="form-control" value="<?php echo $fila['id_cliente'];?>">
+          <input type="text" required="" name="id_cliente" class="form-control" value="<?php echo $fila['id_cliente'];?>">
 				</article>
 			</section>
       <section class="panel-body  col-xs-12">

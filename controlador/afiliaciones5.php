@@ -99,7 +99,7 @@ if (isset($_GET["mante"])){					///nivel 2
 						FROM cliente a
 
 						WHERE a.doc_cli='".$_GET['doc']."' ";
-						//echo $sql;
+						echo $sql;
 			$color="yellow";
 			$boton="Agregar afiliación";
 			$atributo1=' readonly="readonly"';
