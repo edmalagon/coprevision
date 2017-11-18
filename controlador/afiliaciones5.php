@@ -19,9 +19,10 @@ $subtitulo="";
 				}
 			}
 			switch ($_POST["operacion"]) {
-			case 'E':
-
-				$subtitulo="Actualizado";
+			case 'EGRESO':
+				$sql="UPDATE afiliacion SET estado_afiliacion=0,motivo_egreso='".$_POST["motivo_egreso"]."' ,obs_egreso='".$_POST["obs_egreso"]."' ,resp_egreso='".$_SESSION["AUT"]['id_user']."' , from afiliacion where id_afiliacion='".$_POST["id_afiliacion"]."'";
+				$subtitulo="La afiliación del cliente";
+				$sub2="Inactivada";
 			break;
 			case 'X':
 				$sql="SELECT logo from cliente where id=".$_POST["idcli"];
@@ -61,24 +62,26 @@ $subtitulo="";
 
 if (isset($_GET["mante"])){					///nivel 2
 	switch ($_GET["mante"]) {
-		case 'E':
-			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli,
-										 fijo, celular, estado_cli,nom_completo
-
-						FROM cliente a
-
-						WHERE a.doc_cli='".$_GET['doc']."'";
+		case 'EGRESO':
+			$sql="SELECT id_afiliacion, id_empresa, id_convenio, id_cliente, resp_reg, freg, fini_afiliacion,
+									 eps_afiliacion, afp_afiliacion, ccf_afiliacion, arp_afiliacion, ocupacion, clase_riesgo,
+									 salario, estado_afiliacion, resp_clave, usuario, clave, resp_egreso, obs_egreso
+						FROM afiliacion
+						WHERE id_afiliacion='".$_REQUEST['ida']."'";
 						//echo $sql;
 			$color="green";
-			$boton="Actualizar datos cliente";
+			$boton="Inactivar Afiliación";
 			$atributo1=' readonly="readonly"';
 			$atributo2='';
 			$atributo3='';
-			$return=$_REQUEST['doc'];
-			$form1='vistaCliente/add_cliente.php';
-			$subtitulo='Edición de datos del Vehículo';
-			break;
-			case 'X':
+			$ida=$_REQUEST['id'];
+			$doc=$_REQUEST['doc'];
+			$nc=$_REQUEST['nc'];
+			$form1='vistaAfiliacion/fin_afiliacion.php';
+			$subtitulo='Inactivar Afiliación';
+		break;
+
+		case 'X':
 			$sql="";
 			$color="red";
 			$boton="Eliminar";
@@ -87,6 +90,7 @@ if (isset($_GET["mante"])){					///nivel 2
 			$atributo3=' disabled="disabled"';
 			$subtitulo='Confirmación para eliminar de datos del Vehículo';
 			break;
+
 			case 'A':
 			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli,
 										 fijo, celular, estado_cli,nom_completo
@@ -103,8 +107,9 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
-			$return=$_REQUEST['doc'];
-			$return1=$_REQUEST['nc'];
+			$ida=$_REQUEST['id'];
+			$doc=$_REQUEST['doc'];
+			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/add_afiliacion.php';
 			$subtitulo='';
 			break;
@@ -125,8 +130,8 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
-			$return=$_REQUEST['doc'];
-			$return1=$_REQUEST['nc'];
+			$doc=$_REQUEST['doc'];
+			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/clave.php';
 			$subtitulo='Registro de credenciales en plataforma de pagos online';
 			break;
@@ -147,8 +152,8 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
-			$return=$_REQUEST['doc'];
-			$return1=$_REQUEST['nc'];
+			$doc=$_REQUEST['doc'];
+			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/documentos.php';
 			$subtitulo='Upload de soportes para usuarios';
 			break;
@@ -224,9 +229,9 @@ if (isset($_GET["mante"])){					///nivel 2
 			if (isset($_REQUEST["doc"])){
 			$doc=$_REQUEST["doc"];
 
-			$sql1="SELECT a.id_afiliacion,fini_afiliacion, eps_afiliacion,
-										afp_afiliacion, ccf_afiliacion, arp_afiliacion, ocupacion, clase_riesgo, estado_afiliacion,salario,
-										b.tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli, fijo,
+			$sql1="SELECT a.id_afiliacion,fini_afiliacion, eps_afiliacion,afp_afiliacion, ccf_afiliacion, arp_afiliacion,
+			 							ocupacion, clase_riesgo, estado_afiliacion,salario,
+										b.id_cliente,tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli, fijo,
 										celular, estado_cli,nom_completo,
 										c.nom_empresa,
 										d.nom_convenio,eps, afp, ccf, tadm,
@@ -254,6 +259,8 @@ if (isset($_GET["mante"])){					///nivel 2
 										<p><a href="rpt_afiliacion.php?ida='.$fila["id_afiliacion"].'&emp='.$fila["nom_empresa"].'" target="_blank"><button type="button" class="btn btn-danger" ><span class="fa fa-file-pdf-o"></span> Certificado Afiliación</button></a></p>
 										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=SOPORTES&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-file"></span> Soportes Afiliación</button></a></p>
 										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=CLAVE&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'"><button type="button" class="btn btn-info" ><span class="fa fa-key"></span> Registro de Claves</button></a></p>
+										<br>
+										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=EGRESO&nc='.$_REQUEST['nc'].'&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'&idc='.$fila["id_cliente"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Cancelar Afiliación</button></a></p>
 									 </td>';
 	        		echo'<td class="text-right"><strong>'.$fila["nom_empresa"].'</strong></td>';
 	        		echo'<td class="text-center"><strong>'.$fila["nom_convenio"].'</strong></td>';
@@ -281,7 +288,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=2;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -296,7 +303,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=3;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -313,7 +320,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=4;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -330,7 +337,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=5;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -346,7 +353,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=6;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -362,7 +369,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=7;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -378,7 +385,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=8;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -395,7 +402,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=9;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -412,7 +419,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=10;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -429,7 +436,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=11;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -445,7 +452,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=12;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -461,7 +468,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=13;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -477,7 +484,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=14;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -493,7 +500,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=15;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';
@@ -509,7 +516,7 @@ if (isset($_GET["mante"])){					///nivel 2
 											<p><span class="fa fa-check fa-4x text-success"></span></p>
 											<h3>'.$obligacion.'</h3>';
 											$ftope=16;
-											$fmora=$ftope-$f;
+											$fmora=$f-$ftope;
 											if ($fmora>0) {
 												$obligacion1='Hoy <strong>'.date('Y-m-d').'</strong> el cliente <strong>'.$fila['nom_completo'].'</strong>. tiene <strong>'.$fmora.'</strong> dias de mora.';
 												echo'<h5 class="alert alert-danger">'.$obligacion1.'</h5>';

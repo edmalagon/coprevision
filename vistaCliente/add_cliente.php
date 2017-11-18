@@ -1,4 +1,4 @@
-<form action="<?php echo PROGRAMA.'?opcion=3';?>" method="POST" enctype="multipart/form-data" onsubmit="return validar()" role="form" class="form-horizontal">
+<form action="<?php echo PROGRAMA.'?doc='.$doc.'&buscar=Buscar&opcion=3';?>" method="POST" enctype="multipart/form-data" onsubmit="return validar()" role="form" class="form-horizontal">
 	<section class="panel panel-default">
     <section class="panel-heading">
       <h3><strong>Registro de datos personales de cliente</strong></h3>

@@ -60,7 +60,7 @@ if (isset($_GET["mante"])){					///nivel 2
 		case 'E':
 			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2,
 									 fnacimiento, edad, email_cli, dir_cli,
-									 fijo, celular, estado_cli,nom_completo
+									 fijo, celular,gremio,estado_cli,nom_completo
 						FROM cliente a
 						WHERE a.doc_cli='".$_GET['doc']."'";
 						//echo $sql;
@@ -69,14 +69,14 @@ if (isset($_GET["mante"])){					///nivel 2
 			$atributo1=' readonly="readonly"';
 			$atributo2='';
 			$atributo3='';
-			$return=$_REQUEST['doc'];
+			$doc=$_REQUEST['doc'];
 			$form1='vistaCliente/add_cliente.php';
 			$subtitulo='Edición de datos del Vehículo';
 			break;
 			case 'X':
 			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2,
 									 fnacimiento, edad, email_cli, dir_cli,
-									 fijo, celular, estado_cli,nom_completo
+									 fijo, celular,gremio, estado_cli,nom_completo
 						FROM cliente a
 						WHERE a.doc_cli='".$_GET['doc']."'";
 			$color="red";
@@ -97,6 +97,7 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
+			$doc=$_REQUEST['doc'];
 			$form1='vistaCliente/add_cliente.php';
 			$subtitulo='';
 			break;
@@ -105,11 +106,11 @@ if (isset($_GET["mante"])){					///nivel 2
 		if($sql!=""){
 			if (!$fila=$bd1->sub_fila($sql)){
 				$fila=array("id_cliente"=>"", "tdoc_cli"=>"", "doc_cli"=>"", "nom1"=>"", "nom2"=>"", "ape1"=>"", "ape2"=>"",
-				"fnacimiento"=>"", "edad"=>"", "email_cli"=>"", "dir_cli"=>"", "fijo"=>"", "celular"=>"", "estado_cli"=>"","nom_completo"=>"");
+				"fnacimiento"=>"", "edad"=>"", "email_cli"=>"", "dir_cli"=>"", "fijo"=>"", "celular"=>"", "gremio"=>"", "estado_cli"=>"","nom_completo"=>"");
 			}
 		}else{
 			$fila=array("id_cliente"=>"", "tdoc_cli"=>"", "doc_cli"=>"", "nom1"=>"", "nom2"=>"", "ape1"=>"", "ape2"=>"",
-			"fnacimiento"=>"", "edad"=>"", "email_cli"=>"", "dir_cli"=>"", "fijo"=>"", "celular"=>"", "estado_cli"=>"","nom_completo"=>"");
+			"fnacimiento"=>"", "edad"=>"", "email_cli"=>"", "dir_cli"=>"", "fijo"=>"", "celular"=>"", "gremio"=>"", "estado_cli"=>"","nom_completo"=>"");
 			}
 
 		?>
@@ -185,7 +186,7 @@ if (isset($_GET["mante"])){					///nivel 2
 			<th colspan="2" class="text-center info"></th>
 			<th class="text-center info">IDENTIFICACIÓN</th>
 			<th class="text-center info">NOMBRE CLIENTE</th>
-			<th class="text-center info">DIRECCION</th>
+			<th class="text-center info">DIRECCION / GREMIO</th>
 			<th class="text-center info">TELEFONOS</th>
 			<th colspan="2" class="text-center info">ACCIONES</th>
 		</tr>
@@ -195,7 +196,8 @@ if (isset($_GET["mante"])){					///nivel 2
 			$doc=$_REQUEST["doc"];
 			$f1=$_REQUEST["f1"];
 			$f2=$_REQUEST["f2"];
-			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli, fijo, celular, estado_cli,nom_completo
+			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli,
+			dir_cli, fijo, celular,gremio, estado_cli,nom_completo
 
 						FROM cliente a
 
@@ -215,7 +217,7 @@ if (isset($_GET["mante"])){					///nivel 2
 	        		echo'<th class="text-center"><a href="'.PROGRAMA.'?opcion='.$_REQUEST["opcion"].'&mante=E&doc='.$fila["doc_cli"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span>Editar Cliente</button></a></th>';
 	        		echo'<td class="text-right"><strong>'.$fila["tdoc_cli"].':</strong> '.$fila["doc_cli"].'</td>';
 	        		echo'<td class="text-center">'.$fila["nom_completo"].'</td>';
-	        		echo'<td class="text-left">'.$fila["dir_cli"].'</td>';
+	        		echo'<td class="text-left"><p>'.$fila["dir_cli"].'</p><p><strong>GREMIO: </strong>'.$fila["gremio"].'</p></td>';
 	        		echo'<td class="text-left"><strong>Fijo: </strong>'.$fila["fijo"].' <strong>Celular: </strong>'.$fila["celular"].'</td>';
 							echo'<th class="text-center"><a href="'.PROGRAMA.'?opcion=4&id='.$fila["id_cliente"].'&doc='.$fila["doc_cli"].'&nc='.$fila["nom_completo"].'"><button type="button" class="btn btn-primary" ><span class="fa fa-rocket"></span> Ver Afiliaciones</button></a></th>';
 	        		echo "</tr>\n";
@@ -229,7 +231,8 @@ if (isset($_GET["mante"])){					///nivel 2
 			$doc=$_REQUEST["nom"];
 			$f1=$_REQUEST["f1"];
 			$f2=$_REQUEST["f2"];
-			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli, fijo, celular, estado_cli,nom_completo
+			$sql="SELECT a.id_cliente, tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli,
+									 fijo, celular,gremio, estado_cli,nom_completo
 
 						FROM cliente a
 
@@ -251,7 +254,7 @@ if (isset($_GET["mante"])){					///nivel 2
 						echo'<th class="text-center"><a href="'.PROGRAMA.'?opcion='.$_REQUEST["opcion"].'&mante=E&doc='.$fila["doc_cli"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-edit"></span>Editar Cliente</button></a></th>';
 						echo'<td class="text-right"><strong>'.$fila["tdoc_cli"].':</strong> '.$fila["doc_cli"].'</td>';
 						echo'<td class="text-center">'.$fila["nom_completo"].'</td>';
-						echo'<td class="text-left">'.$fila["dir_cli"].'</td>';
+						echo'<td class="text-left"><p>'.$fila["dir_cli"].'</p><p><strong>GREMIO: </strong>'.$fila["gremio"].'</p></td>';
 						echo'<td class="text-left"><strong>Fijo: </strong>'.$fila["fijo"].' <strong>Celular: </strong>'.$fila["celular"].'</td>';
 						echo'<th class="text-center"><a href="'.PROGRAMA.'?opcion=4&id='.$fila["id_cliente"].'&doc='.$fila["doc_cli"].'&nc='.$fila["nom_completo"].'"><button type="button" class="btn btn-primary" ><span class="fa fa-rocket"></span> Ver Afiliaciones</button></a></th>';
 						echo "</tr>\n";

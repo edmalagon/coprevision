@@ -38,10 +38,14 @@ class MYPDF extends TCPDF {
         $n2=' SOCIALES';
         $n3='PARA TRABAJADORES INDEPENDIENTES';
         $titulo='PREVISOCIAL -- NIT 832011119-3';
+        $this->multicell(25,0,$this->image($image_file , $this->GetX(), $this->GetY(),20,20),0,'L');
 
-        $this->cell(25,0,$this->image($image_file , $this->GetX(), $this->GetY(),20,20),0,'L');
-        $this->SetFont('','B',9);
-        $this->multiCell(60,0,$n1.$n2.$n3,0,'C');
+        // Set font
+        $this->SetFont('helvetica', 'B', 10);
+        // Title
+        $this->Cell(0, 35, $n1.$n2.$n3, 1, false, 'C', 0, '', 0, false, 'M', 'M');
+
+
 
     }
 	// Load table data from file
