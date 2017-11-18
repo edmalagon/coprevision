@@ -205,7 +205,7 @@ class MYPDF extends TCPDF {
       $this->Cell(80,8,'CC:_________________________. ',0,0,'L');
       $this->Cell(100,0,'Fecha Egreso:______________________. ',0,0,'L');
       $this->Ln(14);
-      $this->Cell(180,0,$firma.':_______________________________. ',0,0,'C');
+      $this->Cell(180,0,$firma.':_______________________________. '.$row['registra'],0,0,'C');
       $this->Ln();
 
 		}
@@ -270,7 +270,8 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,fnacimiento,celular,gr
              valor_dias_laborados, dias_mora, porcen_mora,
              h.nombre afp,
              i.nombre ccf,
-             j.nombre arp
+             j.nombre arp,
+             k.nombre registra
 
       FROM cliente a INNER JOIN afiliacion f on a.id_cliente=f.id_cliente
                      INNER JOIN empresa d on d.id_empresa=f.id_empresa
@@ -281,6 +282,7 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,fnacimiento,celular,gr
                      LEFT JOIN aseguradora h on h.id_aseguradora=f.afp_afiliacion
                      LEFT JOIN aseguradora i on i.id_aseguradora=f.ccf_afiliacion
                      LEFT JOIN aseguradora j on j.id_aseguradora=f.arp_afiliacion
+                     LEFT JOIN user k on k.id_user=f.resp_reg
       WHERE f.id_afiliacion=$sede
 
 ";

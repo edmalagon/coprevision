@@ -20,7 +20,7 @@ $subtitulo="";
 			}
 			switch ($_POST["operacion"]) {
 			case 'EGRESO':
-				$sql="UPDATE afiliacion SET estado_afiliacion=0,motivo_egreso='".$_POST["motivo_egreso"]."' ,obs_egreso='".$_POST["obs_egreso"]."' ,resp_egreso='".$_SESSION["AUT"]['id_user']."' , from afiliacion where id_afiliacion='".$_POST["id_afiliacion"]."'";
+				$sql="UPDATE afiliacion SET estado_afiliacion=0,motivo_egreso='".$_POST["motivo_egreso"]."' ,obs_egreso='".$_POST["obs_egreso"]."' ,resp_egreso='".$_SESSION["AUT"]['id_user']."' WHERE id_afiliacion='".$_POST["id_afiliacion"]."'";
 				$subtitulo="La afiliación del cliente";
 				$sub2="Inactivada";
 			break;
@@ -49,7 +49,7 @@ $subtitulo="";
 				$sub2='Agregada';
 			break;
 		}
-		//echo $sql;
+		echo $sql;
 		if ($bd1->consulta($sql)){
 			$subtitulo="$subtitulo fue $sub2 con exito!";
 			$check='si';
@@ -74,7 +74,8 @@ if (isset($_GET["mante"])){					///nivel 2
 			$atributo1=' readonly="readonly"';
 			$atributo2='';
 			$atributo3='';
-			$ida=$_REQUEST['id'];
+			$ida=$_REQUEST['idc'];
+
 			$doc=$_REQUEST['doc'];
 			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/fin_afiliacion.php';
@@ -107,7 +108,7 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
-			$ida=$_REQUEST['id'];
+			$ida=$_REQUEST['idc'];
 			$doc=$_REQUEST['doc'];
 			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/add_afiliacion.php';
@@ -208,13 +209,7 @@ if (isset($_GET["mante"])){					///nivel 2
 	</section>
 	<section class="panel-body">
 		<table class="table table-responsive table-bordered">
-			<tr>
-				<td colspan="7" class="text-right">
-					<a href="<?php echo PROGRAMA.'?opcion='.$_REQUEST["opcion"].'&mante=A&doc='.$_REQUEST['doc'].'&nc='.$_REQUEST['nc'];?>" align="center" >
-						<button type="button" class="btn btn-info btn-lg fa fa-plus-circle fa-3x" > Adicionar Nueva afiliación</button>
-					</a>
-				</td>
-			</tr>
+
 		<tr>
 			<th class="text-center info"></th>
 			<th class="text-center info">EMPRESA</th>
@@ -231,8 +226,8 @@ if (isset($_GET["mante"])){					///nivel 2
 
 			$sql1="SELECT a.id_afiliacion,fini_afiliacion, eps_afiliacion,afp_afiliacion, ccf_afiliacion, arp_afiliacion,
 			 							ocupacion, clase_riesgo, estado_afiliacion,salario,
-										b.id_cliente,tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli, dir_cli, fijo,
-										celular, estado_cli,nom_completo,
+										b.id_cliente,tdoc_cli, doc_cli, nom1, nom2, ape1, ape2, fnacimiento, edad, email_cli,
+										dir_cli, fijo,celular,gremio, estado_cli,nom_completo,
 										c.nom_empresa,
 										d.nom_convenio,eps, afp, ccf, tadm,
 										e.nombre eps_ase,
@@ -267,6 +262,7 @@ if (isset($_GET["mante"])){					///nivel 2
 	        		echo'<td class="text-left">
 										<p>'.$fila["nom_completo"].' </p>
 										<p><strong>'.$fila["tdoc_cli"].':</strong> '.$fila["doc_cli"].'</p>
+										<p class="text-primary"><strong>Gremio:</strong> '.$fila["gremio"].'</p>
 									 </td>';
 	        		echo'<td class="text-left">
 										<p><strong>'.$fila["eps_ase"].'= </strong>'.$fila["eps"].' %</p>
@@ -533,7 +529,13 @@ if (isset($_GET["mante"])){					///nivel 2
 			}
 
 			?>
-
+			<tr>
+				<td colspan="7" class="text-right">
+					<a href="<?php echo PROGRAMA.'?opcion='.$_REQUEST["opcion"].'&mante=A&doc='.$_REQUEST['doc'].'&idc='.$_REQUEST['id'].'&nc='.$_REQUEST['nc'];?>" align="center" >
+						<button type="button" class="btn btn-info btn-lg fa fa-plus-circle fa-3x" > Adicionar Nueva afiliación</button>
+					</a>
+				</td>
+			</tr>
 	</table>
 </section>
 	<?php

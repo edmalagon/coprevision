@@ -122,8 +122,8 @@ class MYPDF extends TCPDF {
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'AFP:',1,0,'L');
-      $this->SetFont('','',10);
-      $this->Cell(100,0, $row['afp'],1,0,'C');
+      $this->SetFont('','',7);
+      $this->Cell(100,0, $row['afp'],0,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_afp'],1,0,'C');
       $this->Ln();
@@ -205,29 +205,29 @@ class MYPDF extends TCPDF {
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'EPS:',1,0,'L');
-      $this->SetFont('','',8);
+      $this->SetFont('','',9);
       $this->Cell(100,0, $row['eps'],1,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_eps'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'AFP:',1,0,'L');
-      $this->SetFont('','',8);
-      $this->Cell(100,0, $row['afp'],1,0,'C');
+      $this->SetFont('','',7);
+      $this->Cell(100,0, $row['afp'],0,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_afp'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'ARP:',1,0,'L');
-      $this->SetFont('','',8);
-      $this->Cell(100,0, $row['arp'],1,0,'C');
+      $this->SetFont('','',7);
+      $this->Cell(100,0, $row['arp'],0,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_arp'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
       $this->Cell(20,0,'CCF:',1,0,'L');
-      $this->SetFont('','',8);
-      $this->Cell(100,0, $row['ccf'],1,0,'C');
+      $this->SetFont('','',7);
+      $this->Cell(100,0, $row['ccf'],0,0,'C');
       $this->SetFont('','',10);
       $this->Cell(60,0, '$ '.$row['t_ccf'],1,0,'C');
       $this->Ln();
@@ -249,10 +249,8 @@ class MYPDF extends TCPDF {
       $this->Cell(60,0,'Firma y cedula del beneficiario:',1,0,'L');
       $this->SetFont('','B',10);
       $this->Cell(120,30, '___________________________________',1,0,'C');
-      $this->Ln();
+      $this->Ln();  
 		}
-
-
 	}
 }
 
@@ -313,7 +311,8 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,celular,
              g.id_obligacion,mes_pago, t_eps, t_afp, t_arp, t_ccf, t_servicio, dias_laborados, valor_dias_laborados, dias_mora, porcen_mora,
              h.nombre afp,
              i.nombre ccf,
-             j.nombre arp
+             j.nombre arp,
+             k.nombre registra
 
       FROM cliente a INNER JOIN afiliacion f on a.id_cliente=f.id_cliente
                      INNER JOIN empresa d on d.id_empresa=f.id_empresa
@@ -324,6 +323,7 @@ $sql="SELECT a.tdoc_cli,doc_cli,nom_completo,dir_cli,fijo,celular,
                      LEFT JOIN aseguradora h on h.id_aseguradora=f.afp_afiliacion
                      LEFT JOIN aseguradora i on i.id_aseguradora=f.ccf_afiliacion
                      LEFT JOIN aseguradora j on j.id_aseguradora=f.arp_afiliacion
+                     LEFT JOIN user k on k.id_user=g.resp_reg
       WHERE g.id_obligacion=$sede
 
 ";

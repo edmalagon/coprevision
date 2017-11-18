@@ -52,8 +52,8 @@ $subtitulo="";
 				$arl=ceil($s*$_POST['t_arp']/100);
 				echo $eps;
 				$tadm=$_POST['t_admin'];
-				$ttotal=$eps+$afp+$arl+$ccf+$tadm+1000;
-				$t=round($ttotal,-3);
+				$ttotal=$eps+$afp+$arl+$ccf+$tadm;
+				$t=round($ttotal,3);
 
 				$sql="INSERT INTO obligacion (id_afiliacion, freg, resp_reg, mes_pago, t_eps, t_afp, t_arp, t_ccf,
 																			t_servicio, estado_obligacion,dias_laborados,valor_dias_laborados,dias_mora,porcen_mora)

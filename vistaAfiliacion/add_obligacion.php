@@ -147,7 +147,7 @@
 					$empresa=$fila['nom_empresa'];
 					if ($empresa=='PREVISOCIAL') {
 						$tadmin=$fila['tadm'];
-						$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin+1000;
+						$ttotal=$teps+$tafp+$tarl+$tccf+$tadmin;
 						$t=round($ttotal,-3);
 						echo'
 						<article class="col-xs-2">
