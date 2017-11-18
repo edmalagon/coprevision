@@ -34,9 +34,9 @@ $subtitulo="";
 			break;
 			case 'A':
 			$f=date('Y-m-d');
-				$sql="INSERT INTO afiliacion (id_empresa, id_convenio, id_cliente, resp_reg, freg, fini_afiliacion,
+				$sql="INSERT INTO afiliacion (id_empresa, id_convenio, id_cliente, resp_reg, fini_afiliacion,
 					eps_afiliacion, afp_afiliacion, ccf_afiliacion, arp_afiliacion, ocupacion, clase_riesgo,salario, estado_afiliacion)
-				VALUES ('".$_POST["id_empresa"]."','".$_POST["id_convenio"]."','".$_POST["id_cliente"]."','".$_SESSION['AUT']['id_user']."','".$f."',
+				VALUES ('".$_POST["id_empresa"]."','".$_POST["id_convenio"]."','".$_POST["id_cliente"]."','".$_SESSION['AUT']['id_user']."',
 				'".$_POST["fini_afiliacion"]."','".$_POST["eps_afiliacion"]."','".$_POST["afp_afiliacion"]."','".$_POST["ccf_afiliacion"]."',
 				'".$_POST["arp_afiliacion"]."','".$_POST["idocu"]."','".$_POST["nivel_arp"]."','".$_POST["salario"]."','1')";
 				$subtitulo="La afiliación del cliente";
