@@ -49,7 +49,7 @@ $subtitulo="";
 				$sub2='Agregada';
 			break;
 		}
-		echo $sql;
+		//echo $sql;
 		if ($bd1->consulta($sql)){
 			$subtitulo="$subtitulo fue $sub2 con exito!";
 			$check='si';
@@ -99,7 +99,7 @@ if (isset($_GET["mante"])){					///nivel 2
 						FROM cliente a
 
 						WHERE a.doc_cli='".$_GET['doc']."' ";
-						echo $sql;
+						//echo $sql;
 			$color="yellow";
 			$boton="Agregar afiliación";
 			$atributo1=' readonly="readonly"';
