@@ -32,20 +32,22 @@ require_once('tcpdf/tcpdf.php');
 class MYPDF extends TCPDF {
 	public function Header() {
         // Logo
-
         $image_file = 'images/previsocial.jpg';
-        $n1='ASOCIACIÓN MUTUAL DE SERVICIOS';
-        $n2=' SOCIALES';
-        $n3='PARA TRABAJADORES INDEPENDIENTES';
-        $titulo='PREVISOCIAL -- NIT 832011119-3';
-        $this->multicell(25,0,$this->image($image_file , $this->GetX(), $this->GetY(),20,20),0,'L');
+        $date=date('Y-m-d');
+        $date1=date('m');
+        $y=date('Y');
+        $this->multicell(30,0,$this->image($image_file, $this->GetX(), $this->GetY(),20,20),0,'J');
+
 
         // Set font
         $this->SetFont('helvetica', 'B', 10);
         // Title
-        $this->Cell(0, 35, $n1.$n2.$n3, 1, false, 'C', 0, '', 0, false, 'M', 'M');
-
-
+        $this->Cell(0, 10, 'ASOCIACIÓN MUTUAL DE SERVICIOS SOCIALES'.'PARA TRABAJADORES INDEPENDIENTES', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Ln();
+        $this->Cell(60, 3, '', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Cell(60, 3, 'PREVISOCIAL -- NIT 832011119-3', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Cell(60, 3, 'Fecha impresión:'.$date, 0, false, 'C', 0, '', 0, false, 'M', 'M');
+        $this->Ln(10);
 
     }
 	// Load table data from file
@@ -156,22 +158,35 @@ class MYPDF extends TCPDF {
       $this->Cell(60,0, '$ '.$row['t_servicio'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
-      $this->Cell(60,0,'Firma y cedula del beneficiario:',1,0,'L');
+      $this->Cell(90,0,'Firma y cedula del beneficiario:',1,0,'L');
+      $this->Cell(90,0,'Sello Previsocial:',1,0,'L');
       $this->SetFont('','B',10);
-      $this->Cell(120,30, '___________________________________',1,0,'C');
+      $this->Ln();
+      $this->Cell(90,15, '___________________________________',1,0,'C');
+      $this->SetFont('','B',8);
+      $this->Cell(90,15,$row['registra'],1,0,'R');
       $this->Ln();
       $this->Ln();
       $this->Ln();
-
+      $this->Ln();
+      $this->Ln();
+      $this->Ln();
+      $this->SetFont('helvetica', 'B', 1);
       $image_file = 'images/previsocial.jpg';
-      $n1='ASOCIACIÓN MUTUAL DE SERVICIOS';
-      $n2=' SOCIALES';
-      $n3='PARA TRABAJADORES INDEPENDIENTES';
-      $titulo='PREVISOCIAL -- NIT 832011119-3';
+      $date=date('Y-m-d');
+      $date1=date('m');
+      $y=date('Y');
+      $this->multicell(30,0,$this->image($image_file, $this->GetX(), $this->GetY(),20,20),0,'J');
 
-      $this->cell(25,0,$this->image($image_file , $this->GetX(), $this->GetY(),20,20),0,'L');
-      $this->SetFont('','B',9);
-      $this->multiCell(60,0,$n1.$n2.$n3,0,'C');
+
+      // Set font
+      $this->SetFont('helvetica', 'B', 10);
+      // Title
+      $this->Cell(0, 10, 'ASOCIACIÓN MUTUAL DE SERVICIOS SOCIALES'.'PARA TRABAJADORES INDEPENDIENTES', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+      $this->Ln();
+      $this->Cell(60, 3, '', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+      $this->Cell(60, 3, 'PREVISOCIAL -- NIT 832011119-3', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+      $this->Cell(60, 3, 'Fecha impresión:'.$date, 0, false, 'C', 0, '', 0, false, 'M', 'M');
       $this->Ln(10);
       $this->SetFont('','B',10);
       $this->Cell(30,0,'Beneficiario:',1,0,'L');
@@ -179,7 +194,7 @@ class MYPDF extends TCPDF {
       $this->Cell(110,0, utf8_encode($row['nom_completo']),1,0,'C');
       $this->SetFont('','B',10);
       $this->Cell(20,0,'Recibo:',1,0,'L');
-      $this->SetFont('','B',10);
+      $this->SetFont('','B',20);
       $this->Cell(20,0, utf8_encode($row['id_obligacion']),1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
@@ -246,10 +261,14 @@ class MYPDF extends TCPDF {
       $this->Cell(60,0, '$ '.$row['t_servicio'],1,0,'C');
       $this->Ln();
       $this->SetFont('','B',10);
-      $this->Cell(60,0,'Firma y cedula del beneficiario:',1,0,'L');
+      $this->Cell(90,0,'Firma y cedula del beneficiario:',1,0,'L');
+      $this->Cell(90,0,'Sello Previsocial:',1,0,'L');
       $this->SetFont('','B',10);
-      $this->Cell(120,30, '___________________________________',1,0,'C');
-      $this->Ln();  
+      $this->Ln();
+      $this->Cell(90,15, '___________________________________',1,0,'C');
+      $this->SetFont('','B',8);
+      $this->Cell(90,15,$row['registra'],1,0,'R');
+      $this->Ln();
 		}
 	}
 }
