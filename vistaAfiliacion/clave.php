@@ -1,4 +1,4 @@
-<form action="<?php echo PROGRAMA.'?opcion=4&doc='.$return.'$nc='.$return1;?>" method="POST" enctype="multipart/form-data" onsubmit="return validar()" role="form" class="form-horizontal">
+<form action="<?php echo PROGRAMA.'?opcion=4&id='.$ida.'&doc='.$doc.'&nc='.$nc;?>" method="POST" enctype="multipart/form-data" onsubmit="return validar()" role="form" class="form-horizontal">
 	<section class="panel panel-default">
     <section class="panel-heading">
       <h3><strong> <?php echo $subtitulo.': '.$fila['nom1'].' '.$fila['nom2'].' '.$fila['ape1'].' '.$fila['ape2'] ;?></strong></h3>

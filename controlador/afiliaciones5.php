@@ -131,6 +131,7 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
+			$ida=$_REQUEST['id'];
 			$doc=$_REQUEST['doc'];
 			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/clave.php';
@@ -153,6 +154,7 @@ if (isset($_GET["mante"])){					///nivel 2
 			$date=date('Y-m-d');
 			$date1=date('H:i');
 			$edad='<h4>?</h4>';
+			$ida=$_REQUEST['id'];
 			$doc=$_REQUEST['doc'];
 			$nc=$_REQUEST['nc'];
 			$form1='vistaAfiliacion/documentos.php';
@@ -252,8 +254,8 @@ if (isset($_GET["mante"])){					///nivel 2
 							echo"<tr>\n";
 							echo'<td class="text-left"
 										<p><a href="rpt_afiliacion.php?ida='.$fila["id_afiliacion"].'&emp='.$fila["nom_empresa"].'" target="_blank"><button type="button" class="btn btn-danger" ><span class="fa fa-file-pdf-o"></span> Certificado Afiliación</button></a></p>
-										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=SOPORTES&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'"><button type="button" class="btn btn-warning" ><span class="fa fa-file"></span> Soportes Afiliación</button></a></p>
-										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=CLAVE&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'"><button type="button" class="btn btn-info" ><span class="fa fa-key"></span> Registro de Claves</button></a></p>
+										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=SOPORTES&doc='.$_REQUEST['doc'].'&id='.$fila["id_afiliacion"].'&nc='.$_REQUEST['nc'].'"><button type="button" class="btn btn-warning" ><span class="fa fa-file"></span> Soportes Afiliación</button></a></p>
+										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=CLAVE&doc='.$_REQUEST['doc'].'&id='.$fila["id_afiliacion"].'&nc='.$_REQUEST['nc'].'"><button type="button" class="btn btn-info" ><span class="fa fa-key"></span> Registro de Claves</button></a></p>
 										<br>
 										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=EGRESO&nc='.$_REQUEST['nc'].'&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'&idc='.$fila["id_cliente"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Cancelar Afiliación</button></a></p>
 									 </td>';
