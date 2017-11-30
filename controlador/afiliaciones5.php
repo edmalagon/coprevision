@@ -43,7 +43,7 @@ $subtitulo="";
 				$sub2='Agregada';
 			break;
 			case 'CLAVE': //pendiente crear en bd de produccion
-			$sql="UPDATE clave  SET resp_clave='".$_SESSION["AUT"]['id_user']."',usuario='".$_POST["usuario"]."',
+			$sql="UPDATE afiliacion  SET resp_clave='".$_SESSION["AUT"]['id_user']."',usuario='".$_POST["usuario"]."',
 			clave='".$_POST["clave"]."' WHERE id_afiliacion='".$_POST["id_afiliacion"]."' ";
 				$subtitulo="Las credenciales";
 				$sub2='Agregada';
