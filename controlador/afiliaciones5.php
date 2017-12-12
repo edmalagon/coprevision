@@ -255,7 +255,30 @@ if (isset($_GET["mante"])){					///nivel 2
 							echo'<td class="text-left"
 										<p><a href="rpt_afiliacion.php?ida='.$fila["id_afiliacion"].'&emp='.$fila["nom_empresa"].'" target="_blank"><button type="button" class="btn btn-danger" ><span class="fa fa-file-pdf-o"></span> Certificado Afiliación</button></a></p>
 										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=SOPORTES&doc='.$_REQUEST['doc'].'&id='.$fila["id_afiliacion"].'&nc='.$_REQUEST['nc'].'"><button type="button" class="btn btn-warning" ><span class="fa fa-file"></span> Soportes Afiliación</button></a></p>
-										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=CLAVE&doc='.$_REQUEST['doc'].'&id='.$fila["id_afiliacion"].'&nc='.$_REQUEST['nc'].'"><button type="button" class="btn btn-info" ><span class="fa fa-key"></span> Registro de Claves</button></a></p>
+										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=CLAVE&doc='.$_REQUEST['doc'].'&id='.$fila["id_afiliacion"].'&nc='.$_REQUEST['nc'].'"><button type="button" class="btn btn-info" ><span class="fa fa-key"></span> Claves</button></a></p>
+										<p>';
+										$af=$fila['id_afiliacion'];
+											$sql_clave="SELECT usuario,clave from afiliacion where id_afiliacion=$af";
+											if ($tabla_clv=$bd1->sub_tuplas($sql_clave)){
+												 foreach ($tabla_clv as $fila_clv ) {
+													 echo'
+													 <section class="panel panel-default">
+														<section class="panel-body">
+															<article class="col-md-6">
+																<label>USUARIO:</label>
+																<label>'.$fila_clv['usuario'].'</label>
+															</article>
+															<article class="col-md-6">
+																<label>CLAVE:</label>
+																<label>'.$fila_clv['clave'].'</label>
+															</article>
+														</section>
+													 </section>
+													 ';
+												 }
+											}
+										echo '
+										</p>
 										<br>
 										<p><a href="'.PROGRAMA.'?opcion='.$_REQUEST['opcion'].'&mante=EGRESO&nc='.$_REQUEST['nc'].'&doc='.$_REQUEST['doc'].'&ida='.$fila["id_afiliacion"].'&idc='.$fila["id_cliente"].'"><button type="button" class="btn btn-danger" ><span class="fa fa-trash"></span> Cancelar Afiliación</button></a></p>
 									 </td>';

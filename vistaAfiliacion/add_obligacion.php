@@ -119,6 +119,18 @@
 						<option value="Octubre <?php echo $m;?>">Octubre <?php echo $m;?></option>
 						<option value="Noviembre <?php echo $m;?>">Noviembre <?php echo $m;?></option>
 						<option value="Diciembre <?php echo $m;?>">Diciembre <?php echo $m;?></option>
+						<option value="Enero <?php echo $m + 1;?>">Enero <?php echo $m + 1;?></option>
+						<option value="Febrero <?php echo $m  + 1;?>">Febrero <?php echo $m  + 1;?></option>
+						<option value="Marzo <?php echo $m  + 1;?>">Marzo <?php echo $m  + 1;?></option>
+						<option value="Abril <?php echo $m  + 1;?>">Abril <?php echo $m  + 1;?></option>
+						<option value="Mayo <?php echo $m  + 1;?>">Mayo <?php echo $m  + 1;?></option>
+						<option value="Junio <?php echo $m  + 1;?>">Junio <?php echo $m  + 1;?></option>
+						<option value="Julio <?php echo $m  + 1;?>">Julio <?php echo $m  + 1;?></option>
+						<option value="Agosto <?php echo $m  + 1;?>">Agosto <?php echo $m  + 1;?></option>
+						<option value="Septiembre <?php echo $m  + 1;?>">Septiembre <?php echo $m  + 1;?></option>
+						<option value="Octubre <?php echo $m  + 1;?>">Octubre <?php echo $m  + 1;?></option>
+						<option value="Noviembre <?php echo $m  + 1;?>">Noviembre <?php echo $m  + 1;?></option>
+						<option value="Diciembre <?php echo $m  + 1;?>">Diciembre <?php echo $m  + 1;?></option>
 					</select>
 				</article>
 				<?php
